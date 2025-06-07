@@ -73,3 +73,6 @@ group :test do
 end
 
 gem "ruby-openai", "~> 5.1"
+
+gem 'sassc-rails'
+gem 'bootstrap', '~> 5.3.0'
