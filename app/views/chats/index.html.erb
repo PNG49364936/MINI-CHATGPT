@@ -4,10 +4,12 @@
   </section>
   <%= form_with data: { action: "chat#generateResponse" } do |form| %>
     <div class="chat-input">
-      <%= form.text_area :message, id: 'prompt',
-                         data:         { chat_target: "prompt" }
-      %>
+     <%= form.text_area :message, id: 'prompt',
+                   data: { chat_target: "prompt" },
+                   value: "Question : " %>
       <%= form.submit 'Send' %>
+     <%= button_tag 'Clear', type: 'button', class: "btn btn-red", data: { action: "click->chat#clearConversation" } %>
+    <%= button_tag 'Print', type: 'button', class: "btn btn-green", data: { action: "chat#printConversation" } %>
     </div>
   <% end %>
 </div>
