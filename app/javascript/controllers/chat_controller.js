@@ -4,6 +4,25 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
     static targets = ["prompt", "conversation"]
 
+    clearConversation() {
+        // Vider la zone de conversation
+        this.conversationTarget.innerHTML = '';
+        // Optionnel : vider aussi le textarea
+        this.promptTarget.value = '';
+      }
+
+    printConversation() {
+         const content = this.conversationTarget.innerHTML;
+         const printWindow = window.open('', '', 'height=600,width=800');
+         printWindow.document.write('<html><head><title>Conversation</title>');
+         printWindow.document.write('<style>body { font-family: sans-serif; padding: 20px; }</style>');
+         printWindow.document.write('</head><body >');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+    }  
+
     disconnect() {
         if (this.eventSource) {
             this.eventSource.close()
@@ -13,9 +32,9 @@ export default class extends Controller {
     generateResponse(event) {
         event.preventDefault()
 
-        this.#createLabel('You')
+        this.#createLabel('Toi')
         this.#createMessage(this.promptTarget.value)
-        this.#createLabel('ChatGPT')
+        this.#createLabel('Réponse ChatGPT')
         this.currentPre = this.#createMessage()
 
         this.#setupEventSource()
@@ -55,4 +74,6 @@ export default class extends Controller {
             this.eventSource.close()
         }
     }
+
+   
 }

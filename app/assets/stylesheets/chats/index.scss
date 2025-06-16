@@ -60,5 +60,14 @@
         background-color: #0b5ed7;
       }
     }
+    .btn-red {
+        background-color: red;
+        color: white; /* Optionnel : pour que le texte soit blanc et donc plus lisible sur un fond rouge */
+    }
+   
+    .btn-green {
+      background-color: green;
+      color: white; /* Optionnel : pour que le texte soit blanc et donc plus lisible sur un fond rouge */
+  }
   }
   
